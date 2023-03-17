@@ -1,6 +1,6 @@
 import { readFileSync } from 'fs';
-import _ from 'lodash';
 import path from 'path';
+import _ from 'lodash';
 
 // Function that reads files with absolute and relative paths:
 const readFile = (filePath) => {
@@ -9,6 +9,7 @@ const readFile = (filePath) => {
   return fileData;
 };
 
+// Function that compares the data of two files:
 const genDiff = (data1, data2) => {
   const keys1 = _.keys(data1);
   const keys2 = _.keys(data2);
@@ -33,6 +34,7 @@ const genDiff = (data1, data2) => {
   return diffString.split('"').join('');
 };
 
+// Function that collects and exports the result:
 export default (filePath1, filePath2) => {
   const fileData1 = readFile(filePath1);
   const fileData2 = readFile(filePath2);
