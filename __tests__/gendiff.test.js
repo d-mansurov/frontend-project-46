@@ -11,14 +11,12 @@ const fileName1 = 'file1.json';
 const fileName2 = 'file2.json';
 // const expectedFileName = 'expected-file.json';
 
-const filePath1 = getFixturePath(fileName1);
-const filePath2 = getFixturePath(fileName2);
-
 // const expectedFilePath = getFixturePath(expectedFileName);
 // const expectedFile = fs.readFileSync(expectedFilePath, 'utf-8');
 
-const diff = genDiff();
-
 test('test 1 gendiff', () => {
-  expect(diff(filePath1, filePath2).toMatch(/- proxy: 123.234.53.22/));
+  const filePath1 = getFixturePath(fileName1);
+  const filePath2 = getFixturePath(fileName2);
+  const diff = genDiff(filePath1, filePath2);
+  expect(diff).toEqual('{\n- follow: false,\n  host: hexlet.io,\n- proxy: 123.234.53.22,\n- timeout: 50,\n+ timeout: 20,\n+ verbose: true\n}');
 });

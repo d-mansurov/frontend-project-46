@@ -42,5 +42,5 @@ export default (filePath1, filePath2) => {
   const fileDataObject1 = JSON.parse(fileData1);
   const fileDataObject2 = JSON.parse(fileData2);
 
-  console.log(genDiff(fileDataObject1, fileDataObject2));
+  return genDiff(fileDataObject1, fileDataObject2);
 };
