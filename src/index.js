@@ -1,12 +1,22 @@
-import { readFileSync } from 'fs';
+import fs from 'fs';
 import path from 'path';
+import yaml from 'js-yaml';
 import _ from 'lodash';
 
-// Function that reads files with absolute and relative paths:
+// Function that reads and parses the files with absolute and relative paths:
 const readFile = (filePath) => {
   const fullPath = path.resolve(process.cwd(), filePath);
-  const fileData = readFileSync(fullPath.toString());
-  return fileData;
+  const format = path.extname(fullPath);
+  const fileData = fs.readFileSync(fullPath.toString());
+
+  let parse;
+  if (format === '.json') {
+    parse = JSON.parse;
+  } else if (format === '.yml' || format === '.yaml') {
+    parse = yaml.load;
+  }
+
+  return parse(fileData);
 };
 
 // Function that compares the data of two files:
@@ -36,11 +46,8 @@ const genDiff = (data1, data2) => {
 
 // Function that collects and exports the result:
 export default (filePath1, filePath2) => {
-  const fileData1 = readFile(filePath1);
-  const fileData2 = readFile(filePath2);
-
-  const fileDataObject1 = JSON.parse(fileData1);
-  const fileDataObject2 = JSON.parse(fileData2);
-
+  const fileDataObject1 = readFile(filePath1);
+  const fileDataObject2 = readFile(filePath2);
+  console.log(genDiff(fileDataObject1, fileDataObject2));
   return genDiff(fileDataObject1, fileDataObject2);
 };
