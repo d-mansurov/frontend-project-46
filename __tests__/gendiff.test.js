@@ -18,5 +18,5 @@ test('test 1 gendiff', () => {
   const filePath1 = getFixturePath(fileName1);
   const filePath2 = getFixturePath(fileName2);
   const diff = genDiff(filePath1, filePath2);
-  expect(diff).toEqual('{\n- follow: false,\n  host: hexlet.io,\n- proxy: 123.234.53.22,\n- timeout: 50,\n+ timeout: 20,\n+ verbose: true\n}');
+  expect(diff).toEqual('{\n  - follow: false,\n    host: hexlet.io,\n  - proxy: 123.234.53.22,\n  - timeout: 50,\n  + timeout: 20,\n  + verbose: true\n}');
 });
