@@ -6,4 +6,5 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/492a4219ca9372698677/test_coverage)](https://codeclimate.com/github/d-mansurov/frontend-project-46/test_coverage)
 
 Asciinema .JSON-files https://asciinema.org/a/UdOcNlOBlT5kBGFaoQcQNSl0S
+
 Asciinema .YAML-files https://asciinema.org/a/txPoBmYYpsCBnzKhiSSad5LEE

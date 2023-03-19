@@ -1,23 +1,5 @@
-import fs from 'fs';
-import path from 'path';
-import yaml from 'js-yaml';
 import _ from 'lodash';
-
-// Function that reads and parses the files with absolute and relative paths:
-const readFile = (filePath) => {
-  const fullPath = path.resolve(process.cwd(), filePath);
-  const format = path.extname(fullPath);
-  const fileData = fs.readFileSync(fullPath.toString());
-
-  let parse;
-  if (format === '.json') {
-    parse = JSON.parse;
-  } else if (format === '.yml' || format === '.yaml') {
-    parse = yaml.load;
-  }
-
-  return parse(fileData);
-};
+import readFile from './parsers.js';
 
 // Function that compares the data of two files:
 const genDiff = (data1, data2) => {
