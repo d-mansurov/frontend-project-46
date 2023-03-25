@@ -20,6 +20,7 @@ test('test 1 - compare two different files and return the expected data', () => 
   const filePath1 = getFixturePath(fileName1);
   const filePath2 = getFixturePath(fileName2);
   const diff = genDiff(filePath1, filePath2);
+
   console.log(diff);
   console.log(expectedFileData);
   expect(diff).toBe(expectedFileData);
@@ -29,6 +30,7 @@ test('test 2 - compare two similar files and return an empty string', () => {
   const filePath1 = getFixturePath(fileName1);
   const filePath2 = getFixturePath(fileName1);
   const diff = genDiff(filePath1, filePath2);
+
   console.log(diff);
   console.log(expectedFileData);
   expect(diff).toBe('');
